@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, Suspense } from 'react';
 
 import { Button } from '@/components/Button';
 import {
@@ -194,5 +194,9 @@ function FavoritesClient() {
 }
 
 export default function FavoritesPage() {
-  return <FavoritesClient />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <FavoritesClient />
+    </Suspense>
+  );
 }
