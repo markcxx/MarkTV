@@ -25,14 +25,14 @@ export async function GET(request: Request) {
   }
 
   const config = await getConfig();
-  const apiSites = config.SourceConfig.filter((site) => !site.disabled);
-  const searchPromises = apiSites.map((site) => searchFromApi(site, query));
+  const apiSites = config.SourceConfig.filter((site: { key: string; name: string; api: string; detail?: string; from: string; disabled: boolean }) => !site.disabled);
+  const searchPromises = apiSites.map((site: { key: string; name: string; api: string; detail?: string; from: string; disabled: boolean }) => searchFromApi(site, query));
 
   try {
     const results = await Promise.all(searchPromises);
     let flattenedResults = results.flat();
     if (!config.SiteConfig.DisableYellowFilter) {
-      flattenedResults = flattenedResults.filter((result) => {
+      flattenedResults = flattenedResults.filter((result: { type_name?: string; [key: string]: any }) => {
         const typeName = result.type_name || '';
         return !yellowWords.some((word: string) => typeName.includes(word));
       });

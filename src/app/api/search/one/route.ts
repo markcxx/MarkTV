@@ -27,11 +27,11 @@ export async function GET(request: Request) {
   }
 
   const config = await getConfig();
-  const apiSites = config.SourceConfig.filter((site) => !site.disabled);
+  const apiSites = config.SourceConfig.filter((site: { key: string; name: string; api: string; detail?: string; from: string; disabled: boolean }) => !site.disabled);
 
   try {
     // 根据 resourceId 查找对应的 API 站点
-    const targetSite = apiSites.find((site) => site.key === resourceId);
+    const targetSite = apiSites.find((site: { key: string; name: string; api: string; detail?: string; from: string; disabled: boolean }) => site.key === resourceId);
     if (!targetSite) {
       return NextResponse.json(
         {

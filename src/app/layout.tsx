@@ -73,8 +73,8 @@ export default async function RootLayout({
     doubanProxy = config.SiteConfig.DoubanProxy;
     disableYellowFilter = config.SiteConfig.DisableYellowFilter;
     customCategories = config.CustomCategories.filter(
-      (category) => !category.disabled
-    ).map((category) => ({
+      (category: { name?: string; type: string; query: string; disabled: boolean }) => !category.disabled
+    ).map((category: { name?: string; type: string; query: string; disabled: boolean }) => ({
       name: category.name || '',
       type: category.type,
       query: category.query,
