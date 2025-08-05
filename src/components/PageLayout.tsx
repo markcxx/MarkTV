@@ -12,7 +12,10 @@ const PageLayout = ({ children, activePath = '/' }: PageLayoutProps) => {
   return (
     <div className='w-full min-h-screen bg-gray-50 dark:bg-slate-800'>
       {/* 移动端头部 */}
-      <MobileHeader showBackButton={['/play'].includes(activePath)} />
+      <MobileHeader 
+        showBackButton={['/play'].includes(activePath)} 
+        showSearch={!['/play'].includes(activePath)}
+      />
 
       {/* 主要布局容器 */}
       <div className='flex md:grid md:grid-cols-[auto_1fr] w-full min-h-screen md:min-h-auto'>

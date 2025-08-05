@@ -34,6 +34,11 @@ const MobileBottomNav = ({ activePath }: MobileBottomNavProps) => {
       label: '剧集',
       href: '/douban?type=tv',
     },
+    {
+      icon: Clover,
+      label: '综艺',
+      href: '/douban?type=show',
+    },
   ]);
 
   useEffect(() => {
@@ -81,7 +86,7 @@ const MobileBottomNav = ({ activePath }: MobileBottomNavProps) => {
             <li
               key={item.href}
               className='flex-shrink-0'
-              style={{ width: '20vw', minWidth: '20vw' }}
+              style={{ width: `${100 / navItems.length}vw`, minWidth: `${100 / navItems.length}vw` }}
             >
               <Link
                 href={item.href}
