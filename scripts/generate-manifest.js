@@ -11,7 +11,7 @@ const publicDir = path.join(projectRoot, 'public');
 const manifestPath = path.join(publicDir, 'manifest.json');
 
 // 从环境变量获取站点名称
-const siteName = process.env.SITE_NAME || 'MoonTV';
+const siteName = process.env.SITE_NAME || 'MarkTV';
 
 // manifest.json 模板
 const manifestTemplate = {
@@ -56,7 +56,6 @@ try {
 
   // 写入 manifest.json
   fs.writeFileSync(manifestPath, JSON.stringify(manifestTemplate, null, 2));
-  console.log(`✅ Generated manifest.json with site name: ${siteName}`);
 } catch (error) {
   console.error('❌ Error generating manifest.json:', error);
   process.exit(1);
