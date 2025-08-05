@@ -40,7 +40,7 @@ const Logo = () => {
           className='w-8 h-8'
         />
         <span className='text-2xl font-bold text-blue-600 dark:text-blue-400 tracking-tight'>
-          MarkTV
+          CoCoTV
         </span>
       </div>
     </Link>
